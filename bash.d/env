@@ -30,16 +30,20 @@ export HISTSIZE=
 export PATH="${PATH}:${HOME}/.bin"
 export PROMPT_COMMAND="${PROMPT_COMMAND:-:} ; history -a"
 
+# use pg-{up,down} to search the history for matches of the current line
 bind '"\e[5~": history-search-backward'
 bind '"\e[6~": history-search-forward'
-#bind "set completion-ignore-case on"
+# show completions after only one tab press
 bind 'set show-all-if-ambiguous on'
+# case-insensitive tab completion
+# bind "set completion-ignore-case on"
 # cyclic completion
-#bind '"\t":menu-complete'
+# bind '"\t":menu-complete'
 
+# update window size after each command
+# append to history file, don't overwrite it
 shopt -s checkwinsize histappend
 
 eval $(dircolors -b "$HOME/.config/dircolors.256dark")
 
 [[ "$(date +%w)" == "0" ]] && figlet -f small "BACKUP"
-#[[ "$(date +%w)" == "0" ]] && echo -e "################\n## BACKUP DAY ##\n################"
