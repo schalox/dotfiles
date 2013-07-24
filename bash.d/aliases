@@ -1,0 +1,10 @@
+#!/bin/bash
+
+alias lsc='ls --color=auto'
+alias l='lsc'
+alias la='lsc -a'
+alias ll='lsc -l'
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+alias mn='getmail; mutt -Z; newsbeuter -r'

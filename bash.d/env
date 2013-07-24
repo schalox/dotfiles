@@ -1,0 +1,45 @@
+#!/bin/bash
+
+clr_off='\[\e[0m\]'
+clr_bla='\[\e[0;30m\]'
+clr_red='\[\e[0;31m\]'
+clr_gre='\[\e[0;32m\]'
+clr_yel='\[\e[0;33m\]'
+clr_blu='\[\e[0;34m\]'
+clr_pur='\[\e[0;35m\]'
+clr_cya='\[\e[0;36m\]'
+clr_whi='\[\e[0;37m\]'
+
+if [[ -n "$SSH_CLIENT" ]]
+then
+    PS1="${clr_blu}\u${clr_off}@${clr_red}\h${clr_off}:${clr_gre}\W${clr_off}\$ "
+    #PS1="┌─[${clr_blue}\u@\h${clr_off}][${clr_blue}\w${clr_off}][${clr_red}SSH${clr_off}]\n└─╼ "
+else
+    PS1="${clr_blu}\u${clr_off}@${clr_blu}\h${clr_off}:${clr_gre}\W${clr_off}\$ "
+    #PS1="┌─[${clr_blue}\u@\h${clr_off}][${clr_blue}\w${clr_off}]\n└─╼ "
+fi
+
+unset clr_{off,black,red,green,yellow,blue,purple,cyan,white}
+
+export BROWSER=firefox
+export EDITOR=vim
+export GREP_OPTIONS="--color=auto"
+export HISTCONTROL=ignoreboth:erasedups
+export HISTFILESIZE=
+export HISTSIZE=
+export PATH="${PATH}:${HOME}/.bin"
+export PROMPT_COMMAND="${PROMPT_COMMAND:-:} ; history -a"
+
+bind '"\e[5~": history-search-backward'
+bind '"\e[6~": history-search-forward'
+#bind "set completion-ignore-case on"
+bind "set show-all-if-ambiguous on"
+# cyclic completion
+#bind '"\t":menu-complete'
+
+shopt -s checkwinsize histappend
+
+eval $(dircolors -b "$HOME/.config/dircolors.256dark")
+
+[[ "$(date +%w)" == "0" ]] && figlet -f small "BACKUP"
+#[[ "$(date +%w)" == "0" ]] && echo -e "################\n## BACKUP DAY ##\n################"
