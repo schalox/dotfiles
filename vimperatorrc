@@ -1,0 +1,11 @@
+"3.4 (created: 2012/04/02 20:07:29)
+
+set noautocomplete
+set complete=b
+set defsearch=ddg
+set newtab=all
+set noscrollbars
+set tabnumbers
+source! /home/schalox/.vimperatorrc.local
+
+" vim: set ft=vimperator:
