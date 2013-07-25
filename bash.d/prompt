@@ -1,0 +1,20 @@
+#!/bin/bash
+
+c_off='\[\e[0m\]'
+c_bla='\[\e[0;30m\]' c_red='\[\e[0;31m\]' c_gre='\[\e[0;32m\]' c_yel='\[\e[0;33m\]'
+c_blu='\[\e[0;34m\]' c_pur='\[\e[0;35m\]' c_cya='\[\e[0;36m\]' c_whi='\[\e[0;37m\]'
+
+# get __git_ps1, show changes in the repo
+git_prompt="/usr/share/git/git-prompt.sh"
+[[ -f "$git_prompt" ]] && . "$git_prompt"
+
+# user color
+((UID == 0)) && c_u="$c_red" || c_u="$c_blu"
+
+# host color
+[[ -n "$SSH_CLIENT" ]] && c_h="$c_red" || c_h="$c_blu"
+
+GIT_PS1_SHOWDIRTYSTATE='y'
+PS1="${c_u}\u${c_off}@${c_h}\h${c_off}:${c_gre}\W${c_off}\$(__git_ps1 ' ${c_cya}(%s)${c_off}')\$ "
+
+unset c_{off,bla,red,gre,yel,blu,pur,cya,whi,u,h} git_prompt
