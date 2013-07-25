@@ -14,15 +14,12 @@ bind '"\e[5~": history-search-backward'
 bind '"\e[6~": history-search-forward'
 # show completions after only one tab press
 bind 'set show-all-if-ambiguous on'
-# case-insensitive tab completion
-# bind "set completion-ignore-case on"
-# cyclic completion
-# bind '"\t":menu-complete'
 
 # update window size after each command
 # append to history file, don't overwrite it
 shopt -s checkwinsize histappend
 
+# colors for ls
 dcolors="$HOME/.config/dircolors.256dark"
 eval $(dircolors -b "$dcolors")
 
