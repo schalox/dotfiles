@@ -20,7 +20,7 @@ bind 'set show-all-if-ambiguous on'
 shopt -s checkwinsize histappend
 
 # colors for ls
-dcolors="$HOME/.config/dircolors.256dark"
+dcolors="$HOME/.config/dircolors"
 eval $(dircolors -b "$dcolors")
 
 # add extra tab completions to git
