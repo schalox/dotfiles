@@ -54,7 +54,7 @@ for file in "${dfiles[@]}"; do
             if [[ -f "$target" && ! -L "$target" ]]; then
                 if [[ ! -d "$bak_dir" ]]; then
                     echo "Creating backup directory "$bak_dir""
-                    mkdir -p "$bak_dir" || continue
+                    mkdir --parents "$bak_dir" || continue
                 fi
 
                 echo "Backing up $target to "$backup""
@@ -62,7 +62,7 @@ for file in "${dfiles[@]}"; do
             fi
 
             echo "Symlinking "$file" to "$target""
-            ln -sf "$file" "$target"
+            ln --force --symbolic --no-target-directory "$file" "$target"
             ;;
         uninstall)
             if [[ -L "$target" ]]; then
@@ -72,7 +72,7 @@ for file in "${dfiles[@]}"; do
                 if (($?==0)); then
                     if [[ -f "$backup" ]]; then
                         echo "Restoring "$backup" to "$target""
-	                mv "$backup" "$target"
+                        mv "$backup" "$target"
                     fi
                 fi
             fi
