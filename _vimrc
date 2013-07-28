@@ -21,4 +21,10 @@ autocmd Filetype mail set textwidth=72
 " disable Ex mode
 map Q <Nop>
 
+" colors
 colorscheme solarized
+
+" local config
+if filereadable(expand("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif
