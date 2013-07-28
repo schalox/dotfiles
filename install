@@ -1,0 +1,81 @@
+#!/bin/bash
+
+df_dir="${HOME}/.dotfiles"
+bak_dir="${df_dir}.bak"
+prefix="$HOME"
+
+if [[ -z "$@" ]]; then
+    echo "Error: no arguments given. Use -h to get help"
+    exit 1
+fi
+
+while getopts ":hiu" opt; do
+    case "$opt" in
+        h)
+            echo -e "Usage: $0 [-h|-i|-u]"
+            echo -e
+            echo -e "Options:"
+            echo -e "\t-h  Show help message"
+            echo -e "\t-i  Backup old dotfiles from "$prefix" to "$bak_dir","
+            echo -e "\t    symlink new ones from "$df_dir" to "$prefix""
+            echo -e "\t-u  Unlink dotfiles from "$prefix","
+            echo -e "\t    restore old ones from "$bak_dir" to "$prefix""
+            exit 0
+            ;;
+        i)
+            action="install"
+            ;;
+        u)
+            action="uninstall"
+            ;;
+        \?)
+            echo "Error: unknown option -$OPTARG. Use -h to get help"
+            exit 1
+    esac
+done
+
+while read -r -d $'\0'; do
+    dfiles+=("$REPLY")
+done < <(find "$PWD" -name '_*' -print0)
+
+if [[ -z "${dfiles[@]}" ]]; then
+    echo "Error: no files found"
+    exit 1
+fi
+
+for file in "${dfiles[@]}"; do
+    fname="${file##*/}"
+    rname="${fname/_/.}"
+    target="${prefix}/${rname}"
+    backup="${bak_dir}/${rname}.bak"
+
+    case "$action" in
+        install)
+            if [[ -f "$target" && ! -L "$target" ]]; then
+                if [[ ! -d "$bak_dir" ]]; then
+                    echo "Creating backup directory "$bak_dir""
+                    mkdir -p "$bak_dir" || continue
+                fi
+
+                echo "Backing up $target to "$backup""
+                mv "$target" "$backup"
+            fi
+
+            echo "Symlinking "$file" to "$target""
+            ln -sf "$file" "$target"
+            ;;
+        uninstall)
+            if [[ -L "$target" ]]; then
+                echo "Removing symlink "$target""
+                unlink "$target"
+
+                if (($?==0)); then
+                    if [[ -f "$backup" ]]; then
+                        echo "Restoring "$backup" to "$target""
+	                mv "$backup" "$target"
+                    fi
+                fi
+            fi
+            ;;
+    esac
+done
