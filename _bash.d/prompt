@@ -16,6 +16,9 @@ git_prompt="/usr/share/git/git-prompt.sh"
 
 # show changes in the repo after branch name
 GIT_PS1_SHOWDIRTYSTATE='y'
+GIT_PS1_SHOWSTASHSTATE='y'
+GIT_PS1_SHOWUNTRACKEDFILES='y'
+GIT_PS1_SHOWCOLORHINTS='y'
 PS1="${c_u}\u${c_off}@${c_h}\h${c_off}:${c_gre}\W${c_off}\$(__git_ps1 ' ${c_cya}(%s)${c_off}')\$ "
 
 unset c_{off,bla,red,gre,yel,blu,pur,cya,whi,u,h} git_prompt
