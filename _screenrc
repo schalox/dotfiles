@@ -1,0 +1,4 @@
+altscreen on
+startup_message off
+term screen-256color
+vbell off
