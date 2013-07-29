@@ -6,7 +6,7 @@ c_blu='\[\e[0;34m\]' c_pur='\[\e[0;35m\]' c_cya='\[\e[0;36m\]' c_whi='\[\e[0;37m
 
 # get __git_ps1
 git_prompt="/usr/share/git/git-prompt.sh"
-[[ -f "$git_prompt" ]] && . "$git_prompt"
+[[ -r "$git_prompt" ]] && . "$git_prompt"
 
 # user color
 ((UID == 0)) && c_u="$c_red" || c_u="$c_blu"

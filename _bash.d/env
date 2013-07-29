@@ -25,6 +25,6 @@ eval $(dircolors -b "$dcolors")
 
 # add extra tab completions to git
 git_comp="/usr/share/git/completion/git-completion.bash"
-[[ -f "$git_comp" ]] && . "$git_comp"
+[[ -r "$git_comp" ]] && . "$git_comp"
 
 unset dcolors git_comp
