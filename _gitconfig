@@ -1,0 +1,17 @@
+[user]
+	name = schalox
+	email = user1@server2.fake
+[color]
+	ui = auto
+[credential]
+	helper = cache
+[push]
+	default = simple
+[alias]
+	ci = commit
+	civ = commit -v
+	co = checkout
+	di = diff
+	st = status
+[diff]
+	renames = copies
