@@ -1,0 +1,14 @@
+# settings
+articlelist-format  "%f %D  %?T?|%-17T|  ?%t"
+browser             $BROWSER
+datetime-format     "%d.%m.%Y"
+feed-sort-order     firsttag
+feedlist-format     "%8T %n %8u %t"
+keep-articles-days  14
+reload-threads      3
+show-keymap-hint    no
+text-width          80
+
+# colors
+color listfocus    white black bold
+color info         white black bold
