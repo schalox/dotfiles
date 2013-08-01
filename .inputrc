@@ -1,0 +1,5 @@
+# use pg-{up,down} to search the history for matches of the current line
+"\e[5~": history-search-backward
+"\e[6~": history-search-forward
+# show completions after only one tab press
+set show-all-if-ambiguous on
