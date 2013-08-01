@@ -1,0 +1,33 @@
+# connections
+max_peers = 40
+max_peers_seed = 1
+max_uploads = 6
+
+# rates
+download_rate = 512
+upload_rate = 32
+
+# directories
+directory = /mnt/data/dl
+session = ~/.local/share/rtorrent
+
+# ports
+port_range = 51293-51293
+dht_port = 51293
+
+# force encryption
+encryption = require,require_RC4,allow_incoming,enable_retry
+# allow encryption
+# encryption = allow_incoming,try_outgoing,enable_retry
+
+# other settings
+check_hash = yes
+use_udp_trackers = yes
+dht = on
+peer_exchange = yes
+
+# start, restart or stop torrents
+schedule = watch_directory,10,10,"load_start=~/*.torrent"
+schedule = tied_directory,10,10,start_tied=
+schedule = untied_directory,10,10,stop_untied=
+schedule = low_diskspace,10,60,close_low_diskspace=1024M
