@@ -1,5 +1,17 @@
 # use pg-{up,down} to search the history for matches of the current line
-"\e[5~": history-search-backward
-"\e[6~": history-search-forward
+# use C-l to clear the screen in vi-mode
+$if mode=emacs
+    "\e[5~": history-search-backward
+    "\e[6~": history-search-forward
+$else
+    set keymap vi-command
+    "\e[5~": history-search-backward
+    "\e[6~": history-search-forward
+    set keymap vi-insert
+    "\e[5~": history-search-backward
+    "\e[6~": history-search-forward
+    "\C-l":clear-screen
+$endif
+
 # show completions after only one tab press
 set show-all-if-ambiguous on
