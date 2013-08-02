@@ -15,7 +15,7 @@ if [[ -d $bash_dir ]]; then
 fi
 unset bash_dir i
 
-HISTCONTROL='ignoreboth:erasedups'
+HISTCONTROL='erasedups:ignorespace'
 HISTFILESIZE=
 HISTSIZE=
 PROMPT_COMMAND="${PROMPT_COMMAND:-:} ; history -a"
