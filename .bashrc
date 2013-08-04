@@ -16,8 +16,8 @@ fi
 unset bash_dir i
 
 HISTCONTROL='erasedups:ignorespace'
-HISTFILESIZE=
-HISTSIZE=
+HISTFILESIZE=10000
+HISTSIZE=10000
 PROMPT_COMMAND="history -n; history -w; history -c; history -r; ${PROMPT_COMMAND:-:}"
 
 # update window size after each command
