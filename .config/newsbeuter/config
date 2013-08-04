@@ -12,3 +12,6 @@ text-width          80
 # colors
 color listfocus    white black bold
 color info         white black bold
+
+# macros
+macro s set browser "mplayer -really-quiet %u" ; open-in-browser ; redraw ; set browser $BROWSER
