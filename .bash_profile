@@ -8,6 +8,9 @@ export GREP_OPTIONS='--color=auto'
 export PAGER='less'
 export PATH="${PATH}:${HOME}/.bin"
 
+type -P keychain > /dev/null && \
+    eval "$(keychain --eval --quiet --agents gpg)"
+
 if type -P mpd > /dev/null; then
     [[ ! -s ~/.mpd/pid ]] && mpd
 fi

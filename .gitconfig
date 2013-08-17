@@ -13,5 +13,6 @@
 	co = checkout
 	di = diff
 	st = status
+	unstage = reset HEAD --
 [diff]
 	renames = copies

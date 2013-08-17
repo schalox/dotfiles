@@ -105,6 +105,10 @@ share() {
     python2 -m SimpleHTTPServer
 }
 
+sprunge() {
+    curl --form 'sprunge=<-' http://sprunge.us
+}
+
 vacuum-firefox() {
     find ~/.mozilla -type f -name \*.sqlite -exec sqlite3 {} vacuum \; \
         -exec sqlite3 {} reindex \;

@@ -24,6 +24,9 @@ PROMPT_COMMAND="history -n; history -w; history -c; history -r; ${PROMPT_COMMAND
 # append to history file, don't overwrite it
 shopt -s checkwinsize histappend
 
+# disable flow control (Ctrl-{S,Q})
+stty -ixon
+
 # colors for ls
 dcolors="$HOME/.config/dircolors"
 [[ -r "$dcolors" ]] && eval $(dircolors -b "$dcolors")
