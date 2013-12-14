@@ -2,6 +2,7 @@
 
 [[ -r ~/.bashrc ]] && . ~/.bashrc
 
+export AWKPATH="${AWKPATH}:${HOME}/.local/share/awk"
 export BROWSER='firefox'
 export EDITOR='vim'
 export GREP_OPTIONS='--color=auto'
@@ -11,9 +12,10 @@ export PATH="${PATH}:${HOME}/.bin"
 type -P keychain > /dev/null && \
     eval "$(keychain --eval --quiet --agents gpg)"
 
-if type -P mpd > /dev/null; then
-    [[ ! -s ~/.mpd/pid ]] && mpd
-fi
+#if type -P mpd > /dev/null; then
+##    mpd 2> /dev/null
+#    [[ ! -s ~/.mpd/pid ]] && mpd
+#fi
 
 if [[ "$(date +%w)" == "0" ]]; then
     if type -P figlet > /dev/null; then
@@ -22,8 +24,8 @@ if [[ "$(date +%w)" == "0" ]]; then
         echo "BACKUP"
     fi
 fi
-
-if [[ -z "$DISPLAY" && "$(tty)" = "/dev/tty1" ]]; then
-    read -s -n 1 -p "Start X? [Y/n] "; echo
-    [[ $REPLY =~ ^(y|Y)?$ ]] && exec startx
-fi
+#if [[ -z $DISPLAY && $XDG_VTNR == 1 ]]; then
+#    read -s -n 1 -p "Start X? [Y/n] "; echo
+#    [[ $REPLY =~ ^(y|Y)?$ ]] && exec startx
+#fi
+[[ -z $DISPLAY && $XDG_VTNR == 1 ]] && exec startx
