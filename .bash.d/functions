@@ -1,7 +1,30 @@
 #!/bin/bash
 
+_clip_or_arg() {
+    local cmd="$1"
+    if (( $# > 1 )); then
+        for i in "${@:2}"; do
+            if ((use_stdin)); then
+                $cmd <<< "$i"
+            else
+                $cmd "$i"
+            fi
+        done
+    else
+        if ((use_stdin)); then
+            xsel --output | $cmd
+        else
+            $cmd "$(xsel --output)"
+        fi
+    fi
+}
+
+awk-calc() {
+    awk "BEGIN{print $*}"
+}
+
 bigpkgs() {
-    expac -Q '%n\t%m' | \
+    expac --query '%n\t%m' |
         awk '{
             s[$1]=$2
         }
@@ -13,16 +36,26 @@ bigpkgs() {
         }'
 }
 
-awk-calc() {
-    awk "BEGIN{print $*}"
+brsrv() {
+    makemkvcon stream --cache=128 dev:/dev/sr0
+}
+
+brcli() {
+    [[ $1 =~ ^-(h|-help)$ ]] && {
+        echo "Usage: brcli [episode] [port]"
+        return 0
+    }
+    local ep="${1:-0}"
+    local port="${2:-51000}"
+    mpv --cache=4096 --sid=1 "http://localhost:${port}/stream/title${ep}.m2ts"
 }
 
 flush-caches() {
-    sync && sudo sysctl -w vm.drop_caches=3
+    sync && sudo sysctl --write vm.drop_caches=3
 }
 
 fix-permissions() {
-    if [[ -d $1 ]]; then
+    if [[ -d "$1" ]]; then
         find "$1" -type d -exec chmod 755 {} \+
         find "$1" -type f -exec chmod 644 {} \+
     else
@@ -31,13 +64,22 @@ fix-permissions() {
 }
 
 folder2mp3() {
-    [[ "$#" != "1" || ! -d "$1" ]] && return 1
-    find "$1" -type f -name "*.flac" -print0 | \
-        parallel -0 flac2mp3
+    (($#)) || {
+        echo "Error: no arguments"
+        return 1
+    }
+    for i in "$@"; do
+        [[ -d "$i" ]] || {
+            echo "Error: \"$i\" is not a directory"
+            return 1
+        }
+    done
+    find "$@" -type f -name "*.flac" -print0 |
+        parallel --no-notice --null flac2mp3
 }
 
 last_installed() {
-    expac -Q '%l %n' -t '%s' | awk '
+    expac --query '%l %n' --timefmt '%s' | awk '
         {
             pkg[$2]=$1
         }
@@ -59,21 +101,10 @@ myip() {
     curl icanhazip.com
 }
 
-most_used() {
-    awk '{a[$1]++}
-        END {
-            tail="tail -n 30"
-            PROCINFO["sorted_in"]="@val_num_asc"
-            for(i in a) {
-                printf("%4d %s\n", a[i], i) | tail
-            }
-        }' "$HISTFILE"
-}
-
 net-summon() {
     while :; do
-        ping -c 1 google.com 2> /dev/null && \
-            eject && eject -t && break
+        ping -c 1 google.com 2> /dev/null &&
+            eject && eject --trayclose && break
     done
 }
 
@@ -88,21 +119,26 @@ qemu-livecd() {
 }
 
 random_password() {
-    if [[ "$1" =~ ^[[:digit:]]+$ ]]; then
-        pwsize="$1"
-    else
-        pwsize="16"
-    fi
-    echo "$(tr -dc [:alnum:] < /dev/urandom | head -c "$pwsize")"
+    local pwsize="${1:-16}"
+    [[ "$pwsize" =~ ^[[:digit:]]+$ ]] || {
+        echo "Error: $pwsize is not a number"
+        return 1
+    }
+    echo "$(tr --complement --delete [:alnum:] < /dev/urandom |
+        head --bytes "$pwsize")"
 }
 
 rot13_dec() {
-    local cmd="tr 'A-Za-z' 'N-ZA-Mn-za-m'"
-    (($#)) && { echo "$@" | $cmd; return 0; } || xsel -o | $cmd
+    local use_stdin=1
+    _clip_or_arg "tr 'A-Za-z' 'N-ZA-Mn-za-m'" "$@"
 }
 
 share() {
     python2 -m SimpleHTTPServer
+}
+
+sprunge() {
+    curl --form 'sprunge=<-' 'http://sprunge.us'
 }
 
 vacuum-firefox() {
@@ -111,22 +147,19 @@ vacuum-firefox() {
 }
 
 yadl() {
-    local cmd="yle-dl --vfat --sublang all"
-    (($#)) && { $cmd "$1"; return 0; } || $cmd "$(xsel -o)"
+    _clip_or_arg "yle-dl --vfat --sublang all" "$@"
 }
 
 ytdl() {
-    local cmd="youtube-dl --continue"
-    (($#)) && { $cmd "$1"; return 0; } || $cmd "$(xsel -o)"
+    _clip_or_arg "youtube-dl --continue" "$@"
 }
 
 ytmp3() {
-    local cmd="youtube-dl --continue --extract-audio \
-        --audio-format mp3 --audio-quality 0"
-    (($#)) && { $cmd "$1"; return 0; } || $cmd "$(xsel -o)"
+    local cmd="youtube-dl --continue --extract-audio "
+    local cmd+="--audio-format mp3 --audio-quality 0"
+    _clip_or_arg "$cmd" "$@"
 }
 
 ytst() {
-    local cmd="mplayer -really-quiet -cache 1024"
-    (($#)) && { $cmd "$1"; return 0; } || $cmd "$(xsel -o)"
+    _clip_or_arg "mpv --really-quiet --cache=auto" "$@"
 }

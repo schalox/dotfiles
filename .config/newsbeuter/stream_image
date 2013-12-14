@@ -1,0 +1,12 @@
+#!/bin/bash
+
+tmpf="$(mktemp)"
+
+die() {
+    [[ -e "$tmpf" ]] && rm -f "$tmpf"
+    exit "$1"
+}
+
+curl --silent --output "$tmpf" "$1" || die 1
+sxiv -b "$tmpf"
+die 0

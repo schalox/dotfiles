@@ -18,11 +18,15 @@ unset bash_dir i
 HISTCONTROL='erasedups:ignorespace'
 HISTFILESIZE=10000
 HISTSIZE=10000
-PROMPT_COMMAND="history -n; history -w; history -c; history -r; ${PROMPT_COMMAND:-:}"
+PROMPT_COMMAND="${PROMPT_COMMAND:-:}; history -a"
+#PROMPT_COMMAND="history -n; history -w; history -c; history -r; ${PROMPT_COMMAND:-:}"
 
 # update window size after each command
 # append to history file, don't overwrite it
 shopt -s checkwinsize histappend
+
+# disable flow control (Ctrl-{S,Q})
+stty -ixon
 
 # colors for ls
 dcolors="$HOME/.config/dircolors"

@@ -1,3 +1,4 @@
+set editing-mode emacs
 # use pg-{up,down} to search the history for matches of the current line
 # use C-l to clear the screen in vi-mode
 $if mode=emacs
@@ -7,6 +8,7 @@ $else
     set keymap vi-command
     "\e[5~": history-search-backward
     "\e[6~": history-search-forward
+    "\C-l":clear-screen
     set keymap vi-insert
     "\e[5~": history-search-backward
     "\e[6~": history-search-forward
