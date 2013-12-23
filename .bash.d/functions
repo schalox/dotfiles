@@ -26,13 +26,12 @@ awk-calc() {
 bigpkgs() {
     expac --query '%n\t%m' |
         awk '{
-            s[$1]=$2
+            s[$1] = $2
         }
         END {
-            PROCINFO["sorted_in"]="@val_num_asc"
-            for(i in s) {
+            PROCINFO["sorted_in"] = "@val_num_asc"
+            for(i in s)
                 printf("%7d %s\n", s[i]/2^10, i)
-            }
         }'
 }
 
@@ -81,10 +80,10 @@ folder2mp3() {
 last_installed() {
     expac --query '%l %n' --timefmt '%s' | awk '
         {
-            pkg[$2]=$1
+            pkg[$2] = $1
         }
         END {
-            PROCINFO["sorted_in"]="@val_num_asc"
+            PROCINFO["sorted_in"] = "@val_num_asc"
             for(i in pkg) {
                 print i
             }
