@@ -20,6 +20,7 @@ syntax enable
 autocmd Filetype mail set textwidth=72
 " disable Ex mode
 map Q <Nop>
+noremap <F4> :set hlsearch! hlsearch?<CR>
 
 " colors
 colorscheme solarized

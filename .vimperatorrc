@@ -1,5 +1,6 @@
 "3.4 (created: 2012/04/02 20:07:29)
 
+nnoremap <F4> :nohlsearch<CR>
 set noautocomplete
 set complete=b
 set defsearch=ddg
