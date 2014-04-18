@@ -1,8 +1,6 @@
 [user]
 	name = schalox
 	email = user1@server2.fake
-[color]
-	ui = auto
 [credential]
 	helper = cache --timeout=3600
 [push]
