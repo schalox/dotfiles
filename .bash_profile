@@ -9,7 +9,7 @@ export GREP_OPTIONS='--color=auto'
 export PAGER='less'
 export PATH="${PATH}:${HOME}/.bin"
 
-type -P keychain > /dev/null && \
+type -P keychain > /dev/null &&
     eval "$(keychain --eval --quiet --agents gpg)"
 
 (( "$(date '+%w')" )) || {
