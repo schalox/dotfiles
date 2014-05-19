@@ -17,7 +17,7 @@ color info              white   black   bold
 
 # macros
 # stream a video
-macro s set browser "mplayer -really-quiet %u" ; open-in-browser ; redraw ; set browser $BROWSER
+macro s set browser "mpv --really-quiet %u" ; open-in-browser ; redraw ; set browser $BROWSER
 # "stream" an image
 macro i set browser "~/.config/newsbeuter/stream_image %u" ; goto-url 1 ; set browser $BROWSER
 # yank to clipboard
