@@ -1,0 +1,14 @@
+"1.0rc1
+
+loadplugins '\.(js|penta)$'
+group user
+nmap -builtin <F4> :nohlfind<CR>
+set autocomplete=
+set complete=bookmark
+set guioptions=Cns
+set hlfind
+set newtab=all
+set defsearch=ddg
+colorscheme solarized-dark
+
+" vim: set ft=pentadactyl:

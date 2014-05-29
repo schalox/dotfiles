@@ -1,0 +1,15 @@
+# vim: ft=conkyrc tw=0
+#mail_spool          /home/schalox/.mail/gmail/inbox
+#${if_match ${new_mails} > 0}${new_mails} ${endif}\
+out_to_console      yes
+out_to_x            no
+template0           ${execi 3600 checkupdates | wc --lines}
+update_interval     1
+
+TEXT
+${if_mpd_playing}${mpd_smart} ${endif}\
+${if_up enp0s10}${if_match ${template0} > 0}	${template0} ${endif}${endif}\
+${hwmon 1 temp 1}° ${hwmon 0 temp 1}° \
+${uptime_short} \
+${mixer}% \
+${time %A %d.%m.%y %R}

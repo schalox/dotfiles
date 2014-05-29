@@ -1,0 +1,11 @@
+bluray-device=/dev/sr0
+dvd-device=/dev/sr0
+hwdec=vdpau
+msg-color=yes
+msg-module=yes
+osd-font='Liberation Sans:style=Regular'
+osd-font-size=30
+slang=en,fi
+sub-text-font='Liberation Sans:style=Regular'
+sub-text-font-size=30
+vo=vdpau
