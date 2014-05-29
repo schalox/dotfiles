@@ -9,4 +9,4 @@ set noscrollbars
 set tabnumbers
 source! /home/schalox/.vimperatorrc.local
 
-" vim: set ft=vimperator:
+" vim: ft=vimperator

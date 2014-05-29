@@ -9,6 +9,6 @@ set guioptions=Cns
 set hlfind
 set newtab=all
 set defsearch=ddg
-colorscheme solarized-dark
+source /home/schalox/.pentadactylrc.local
 
 " vim: set ft=pentadactyl:
