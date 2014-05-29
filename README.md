@@ -3,13 +3,20 @@
     git clone https://github.com/schalox/dotfiles.git ~/.dotfiles
     stow --verbose=2 --target=$HOME ~/.dotfiles
 
-Add **--no** to the stow command to do a dry-run.
-
 ## Updating
 
     cd ~/.dotfiles
     git pull
     stow --restow --verbose=2 --target=$HOME .
+
+## Removing
+
+    cd ~/.dotfiles
+    stow --verbose=2 --delete .
+
+## Testing
+
+Use **--no** with stow to do a dry-run.
 
 ## License
 
