@@ -1,6 +1,4 @@
 # vim: ft=conkyrc tw=0
-#mail_spool          /home/schalox/.mail/gmail/inbox
-#${if_match ${new_mails} > 0}${new_mails} ${endif}\
 out_to_console      yes
 out_to_x            no
 template0           ${execi 3600 checkupdates | wc --lines}

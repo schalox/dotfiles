@@ -3,13 +3,6 @@
 URxvt*font:             -*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*
 URxvt*boldFont:         -*-terminus-bold-r-*-*-16-*-*-*-*-*-*-*
 URxvt*italicFont:       -*-terminus-bold-r-*-*-16-*-*-*-*-*-*-*
-!URxvt*font:             -misc-ohsnap-medium-*-*-*-14-*-*-*-*-*-*-*
-!URxvt*boldFont:         -misc-ohsnap-bold-*-*-*-14-*-*-*-*-*-*-*
-!URxvt*italicFont:       -misc-ohsnap-bold-*-*-*-14-*-*-*-*-*-*-*
-!URxvt*font:             xft:Envy Code R:pixelsize=13:antialias=true:hinting=true
-!URxvt*boldFont:         xft:Envy Code R:pixelsize=13:antialias=true:hinting=true:bold
-!URxvt*italicFont:       xft:Envy Code R:pixelsize=13:antialias=true:hinting=true:italic
-!URxvt*boldItalicFont:   xft:Envy Code R:pixelsize=13:antialias=true:hinting=true:italic:bold
 URxvt*matcher.button:   1
 URxvt*perl-ext-common:  default,matcher
 URxvt*url-launcher:     /usr/bin/firefox
