@@ -7,6 +7,7 @@ update_interval     1
 TEXT
 ${if_mpd_playing}${mpd_smart} ${endif}\
 ${if_up enp0s10}${if_match ${template0} > 0}	${template0} ${endif}${endif}\
+${head /tmp/fmi 1 900} \
 ${hwmon 1 temp 1}° ${hwmon 0 temp 1}° \
 ${uptime_short} \
 ${mixer}% \
