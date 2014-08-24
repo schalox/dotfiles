@@ -12,6 +12,8 @@ export PATH="${PATH}:${HOME}/.bin"
 type -P keychain > /dev/null &&
     eval "$(keychain --eval --quiet --agents gpg)"
 
+[[ -d ~/.texmf ]] && export TEXMFHOME=~/.texmf
+
 (( "$(date '+%w')" )) || {
     if type -P figlet > /dev/null; then
         figlet -f small "BACKUP"
