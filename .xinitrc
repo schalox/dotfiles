@@ -7,16 +7,20 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi &
 
-~/.bin/mons.sh --primary
+xset +fp ~/.local/share/fonts &
+xset fp rehash &
+
+~/.bin/mons --primary
+~/.bin/vol -u &
 
 redshift &
 hsetroot -fill ~/.wallpaper &
 xset r rate 250 30 &
 unclutter -root -noevents &
 urxvtd -q -f -o && urxvtc -e tmux attach &
-ario &
 firefox &
+ario &
+pidgin &
 
-conky --config="${HOME}/.conkyrc.dwm" |
-    while read -r; do xsetroot -name "$REPLY"; done &
-exec dwm
+awk -f ~/.bin/dwmbar.awk &
+~/src/abs/dwm-git/dwm 2> /tmp/dwm.log
