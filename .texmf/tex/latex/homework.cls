@@ -1,23 +1,28 @@
 \ProvidesClass{homework}
 
-\LoadClass[a4paper,12pt]{article}
+\LoadClass[a4paper,10pt]{article}
 
-\usepackage[top=2cm]{geometry}
-\usepackage{microtype}
-
-% xelatex
-%needed by polyglossia
-\usepackage{fontspec}
 % warn about bad practices
 \usepackage[l2tabu]{nag}
+% 2cm top margin
+\usepackage[top=2cm]{geometry}
+% less overfull-warnings
+\usepackage{microtype}
+
+%needed by polyglossia
+\usepackage{fontspec}
 % replacement for babel
 \usepackage{polyglossia}
 
-\setmainlanguage{finnish}
+% make bookmarks, color links blue, remove cyan border
+% https://tex.stackexchange.com/a/51349
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    pdfborder={0 0 0},
+    urlcolor=blue
+}
 
-% pdflatex
-%\usepackage[finnish]{babel}
-%\usepackage[T1]{fontenc}
-%\usepackage[utf8]{inputenc}
+\setmainlanguage{finnish}
 
 % vim: ft=tex
