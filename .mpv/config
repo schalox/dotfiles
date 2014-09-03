@@ -1,5 +1,3 @@
-bluray-device=/dev/sr0
-dvd-device=/dev/sr0
 hwdec=vdpau
 msg-color=yes
 msg-module=yes
