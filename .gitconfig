@@ -12,3 +12,5 @@
 	unstage = reset HEAD --
 [diff]
 	renames = copies
+[push]
+	default = simple
