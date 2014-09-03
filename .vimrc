@@ -16,6 +16,9 @@ set wildmenu
 " turn on indenting and syntax highlighting
 filetype plugin indent on
 syntax enable
+" treat .md-files as markdown
+" https://stackoverflow.com/a/23279293
+autocmd BufNewFile,BufRead *.md set filetype=markdown
 " use 72 character lines in mails
 autocmd Filetype mail set textwidth=72
 " disable Ex mode
