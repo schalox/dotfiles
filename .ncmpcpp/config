@@ -21,6 +21,7 @@ now_playing_suffix                      = "$/b"
 selected_item_prefix                    = "»"
 
 #### Fine Tuning ####
+data_fetching_delay                     = "no"
 default_space_mode                      = "add"
 empty_tag_marker                        = " "
 enable_window_title                     = "no"
