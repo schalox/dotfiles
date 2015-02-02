@@ -5,7 +5,7 @@ group user
 nmap -builtin <F4> :nohlfind<CR>
 set autocomplete=
 set complete=bookmark
-set guioptions=Cns
+set guioptions=CnsT
 set hlfind
 set newtab=all
 set defsearch=ddg
