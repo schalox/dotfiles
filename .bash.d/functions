@@ -154,8 +154,8 @@ ytdl() {
     # so we have to to use --format
     # https://github.com/rg3/youtube-dl/issues/3165
     # https://en.wikipedia.org/wiki/Youtube#Quality_and_codecs
-    _clip_or_arg "youtube-dl --continue --youtube-include-dash-manifest \
-        --format 137+141/137+172/248+141/248+172/best " "$@"
+    _clip_or_arg "youtube-dl --continue
+        --format bestvideo+bestaudio/Source/h264-hd" "$@"
 }
 
 ytmp3() {
