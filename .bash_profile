@@ -3,7 +3,7 @@
 [[ -r ~/.bashrc ]] && . ~/.bashrc
 
 export AWKPATH="${AWKPATH}:${HOME}/.local/share/awk"
-export BROWSER='firefox'
+export BROWSER='firefox-developer-edition'
 export EDITOR='vim'
 export PAGER='less'
 export PATH="${PATH}:${HOME}/.bin"

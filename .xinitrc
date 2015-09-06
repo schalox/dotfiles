@@ -15,7 +15,7 @@ redshift &
 xset r rate 250 30 &
 unclutter -root -noevents &
 urxvtd -q -f -o && urxvtc -e tmux attach &
-firefox &
+firefox-developer-edition &
 pidgin &
 
 awk -f ~/.bin/dwmbar.awk &
