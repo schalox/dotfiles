@@ -1,11 +1,11 @@
 # connections
 max_peers = 40
-max_peers_seed = 1
+max_peers_seed = 8
 max_uploads = 6
 
 # rates
-download_rate = 2048
-upload_rate = 96
+download_rate = 4096
+upload_rate = 4096
 
 # directories
 directory = /mnt/data/dl
