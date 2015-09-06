@@ -4,8 +4,7 @@
 [[ $- != *i* ]] && return
 
 HISTCONTROL='erasedups:ignorespace'
-HISTFILESIZE=10000
-HISTSIZE=10000
+HISTSIZE=
 PROMPT_COMMAND="${PROMPT_COMMAND:-:}; history -a"
 #PROMPT_COMMAND="history -n; history -w; history -c; history -r; ${PROMPT_COMMAND:-:}"
 
