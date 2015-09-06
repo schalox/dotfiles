@@ -166,5 +166,5 @@ ytmp3() {
 }
 
 ytst() {
-    _clip_or_arg "mpv --really-quiet --cache=auto" "$@"
+    _clip_or_arg "mpv --really-quiet" "$@"
 }
