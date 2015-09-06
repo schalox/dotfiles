@@ -155,7 +155,8 @@ ytdl() {
     # https://github.com/rg3/youtube-dl/issues/3165
     # https://en.wikipedia.org/wiki/Youtube#Quality_and_codecs
     _clip_or_arg "youtube-dl --continue
-        --format bestvideo+bestaudio/Source/h264-hd" "$@"
+        --format bestvideo[height<=1080]+bestaudio/Source/h264-hd/best
+        --merge-output-format mkv" "$@"
 }
 
 ytmp3() {
