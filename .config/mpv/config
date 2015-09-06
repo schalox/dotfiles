@@ -8,4 +8,4 @@ slang=en,fi
 sub-text-font='Liberation Sans:style=Regular'
 sub-text-font-size=30
 vo=vdpau
-ytdl-format=bestvideo+bestaudio
+ytdl-format=bestvideo+bestaudio/best
