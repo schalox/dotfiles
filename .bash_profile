@@ -18,4 +18,5 @@ export PATH="${PATH}:${HOME}/.bin"
     fi
 }
 
-[[ -z $DISPLAY && $XDG_VTNR == 1 ]] && exec startx
+# libreoffice: use gtk2 while gtk3 is still experimental
+export SAL_USE_VCLPLUGIN=gtk
