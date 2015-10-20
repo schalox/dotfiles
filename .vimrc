@@ -31,9 +31,6 @@ set tabstop=4
 
 " colors
 set background=dark
-" set number of colors
-set t_Co=256
-colorscheme solarized
 " turn on filetype-based indenting and syntax highlighting
 filetype plugin indent on
 " enable syntax highlighting
