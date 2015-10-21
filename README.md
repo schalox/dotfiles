@@ -1,18 +1,20 @@
 ## Installation
 
     git clone https://github.com/schalox/dotfiles.git ~/.dotfiles
-    stow --verbose=2 --target=$HOME ~/.dotfiles
+    cd !$
+    stow [--verbose=2] <directories>
 
 ## Updating
 
     cd ~/.dotfiles
-    git pull
-    stow --restow --verbose=2 --target=$HOME .
+    git fetch
+    git rebase origin/master
+    stow --restow [--verbose=2] <directories>
 
 ## Removing
 
     cd ~/.dotfiles
-    stow --verbose=2 --delete .
+    stow --delete [--verbose=2] <directories>
 
 ## Testing
 
