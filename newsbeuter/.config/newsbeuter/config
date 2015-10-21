@@ -22,3 +22,5 @@ macro s set browser "mpv --really-quiet %u" ; open-in-browser ; redraw ; set bro
 macro i set browser "~/.config/newsbeuter/stream_image %u" ; goto-url 1 ; set browser $BROWSER
 # yank to clipboard
 macro y set browser "echo %u | xsel -i" ; open-in-browser ; set browser $BROWSER
+
+include ~/.config/newsbeuter/ttrss
