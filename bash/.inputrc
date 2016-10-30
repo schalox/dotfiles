@@ -17,3 +17,6 @@ $endif
 
 # show completions after only one tab press
 set show-all-if-ambiguous on
+
+# case-insensitive completion
+set completion-ignore-case on
